@@ -1,5 +1,17 @@
 # Digitize Coin Contracts
 
+https://digitizecoin.com
+
+## Bug Bounty
+
+There is 500k of Digitize Tokens put aside for this bounty. Majority of it will be paid out for bugs that would result in the loss of ethers and/or tokens. The bug bounty runs until 2 of April 2018. Email radek *at* startonchain.com if you find anything. If you'd like to perform a regular audit email your portfolio and a quote.
+
+Some other rules:
+* Bugs that have already been submitted by another user or are already known to us are not eligible for bounty rewards.
+* Public disclosure of a vulnerability makes it ineligible for a bounty.
+* You can deploy the contracts on your private chain for bug hunting. Please respect the Ethereum Mainnet and Testnet and refrain from attacking them.
+* The value of rewards paid out will depend on the severity of the bugs found. Determinations of this amount is at the sole and final discretion of DigitizeCoin team but they will be fair.
+
 ## Tests
 
 ```
