@@ -1,6 +1,5 @@
 pragma solidity ^0.4.18;
 
-import "./Ownable.sol";
 import "./utils/SafeMath.sol";
 import "./interfaces/CutdownToken.sol";
 
@@ -16,7 +15,7 @@ import "./interfaces/CutdownToken.sol";
  * @dev A token holder contract that can release its token balance gradually like a
  * typical vesting scheme, with a cliff and vesting period.
  */
-contract TokenVesting is Ownable {
+contract TokenVesting {
   using SafeMath for uint256;
 
   event Released(uint256 amount);
