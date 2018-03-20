@@ -12,6 +12,8 @@ Some other rules:
 * You can deploy the contracts on your private chain for bug hunting. Please respect the Ethereum Mainnet and Testnet and refrain from attacking them.
 * The value of rewards paid out will depend on the severity of the bugs found. Determinations of this amount is at the sole and final discretion of DigitizeCoin team but they will be fair.
 
+Notes: All contracts will be deployed with the latest version of the Solidity compiler, currently `0.4.21`.
+
 ## Tests
 
 ```
