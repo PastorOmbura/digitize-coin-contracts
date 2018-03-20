@@ -1,9 +1,9 @@
 pragma solidity ^0.4.19;
 
-import "./DigitizeCoin.sol";
 import "./Ownable.sol";
 import "./utils/SafeMath.sol";
 import "./RefundVault.sol";
+import "./interfaces/CutdownToken.sol";
 import "./interfaces/PICOPSCertifier.sol";
 
 // ----------------------------------------------------------------------------
@@ -26,7 +26,7 @@ contract DigitizeCoinPresale is Ownable {
   using SafeMath for uint256;
 
   // token being sold
-  DigitizeCoin public token;
+  CutdownToken public token;
   // KYC
   PICOPSCertifier public picopsCertifier;
   // refund vault used to hold funds while crowdsale is running
@@ -67,7 +67,7 @@ contract DigitizeCoinPresale is Ownable {
 
   // constructor
   function DigitizeCoinPresale(uint256 _startTime, uint256 _durationInDays, 
-    uint256 _softCap, address _wallet, address _token, address _picops) public {
+    uint256 _softCap, address _wallet, CutdownToken _token, address _picops) public {
     bool validTimes = _startTime >= now && _durationInDays > 0;
     bool validAddresses = _wallet != address(0) && _token != address(0) && _picops != address(0);
     require(validTimes && validAddresses);
@@ -76,8 +76,8 @@ contract DigitizeCoinPresale is Ownable {
     startTime = _startTime;
     endTime = _startTime + (_durationInDays * 1 days);
     softCap = _softCap;
+    token = _token;
     vault = new RefundVault(_wallet);
-    token = DigitizeCoin(_token);
     picopsCertifier = PICOPSCertifier(_picops);
   }
 
@@ -90,7 +90,7 @@ contract DigitizeCoinPresale is Ownable {
     uint256 chargedWeiAmount = weiAmount;
     uint256 tokensAmount = weiAmount.mul(rate);
     uint256 tokensDue = tokensAmount;
-    uint256 tokensLeft = token.balances(address(this));
+    uint256 tokensLeft = token.balanceOf(address(this));
 
     // if sending more then available, allocate all tokens and refund the rest of ether
     if(tokensAmount > tokensLeft) {

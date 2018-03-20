@@ -253,7 +253,7 @@ contract DigitizeCoin is Ownable {
    * @dev Allows to transfer out the ether balance that was forced into this contract, e.g with `selfdestruct`
    */
   function withdrawEther() onlyOwner public {
-    uint256 totalBalance = this.balance;
+    uint256 totalBalance = address(this).balance;
     require(totalBalance > 0);
     owner.transfer(totalBalance);
     WithdrawnEther(owner, totalBalance);

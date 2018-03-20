@@ -53,13 +53,9 @@ contract TokenVesting {
    */
   function release(CutdownToken _token) public {
     uint256 unreleased = releasableAmount(_token);
-
     require(unreleased > 0);
-
     released[_token] = released[_token].add(unreleased);
-
     _token.transfer(beneficiary, unreleased);
-
     Released(unreleased);
   }
 
