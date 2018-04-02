@@ -22,7 +22,7 @@ let twoEthers = web3.toWei("2", 'ether');
 let fiveEthers = web3.toWei("5", 'ether');
 let tenEthers = web3.toWei("10", 'ether');
 
-let rate = 3000;
+let rate = 6667;
 let softCap = web3.toWei("1", 'ether');
 var state = {
   Active: 0,

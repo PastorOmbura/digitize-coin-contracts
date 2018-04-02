@@ -9,10 +9,11 @@ import "./interfaces/PICOPSCertifier.sol";
 // ----------------------------------------------------------------------------
 // 'Digitize Coin Presale' contract: https://digitizecoin.com 
 //
-// Digitize Coin - DTZ: 0x...
+// Digitize Coin - DTZ: 0x664e6db4044f23c95de63ec299aaa9b39c59328d
 // SoftCap: 600 ether
-// HardCap: tokens -> ether -> discount
-// KYC: PICOPS
+// HardCap: 4000 ether - 26668000 tokens
+// Tokens per 1 ether: 6667
+// KYC: PICOPS https://picops.parity.io
 //
 // (c) Radek Ostrowski / http://startonchain.com - The MIT Licence.
 // ----------------------------------------------------------------------------
@@ -41,7 +42,7 @@ contract DigitizeCoinPresale is Ownable {
   mapping(address => bool) public whitelist;
 
   // how many token units a buyer gets per wei
-  uint256 public constant rate = 3000;
+  uint256 public constant rate = 6667;
 
   // amount of raised money in wei
   uint256 public weiRaised;
@@ -197,7 +198,7 @@ contract DigitizeCoinPresale is Ownable {
    */
   function withdrawEther() onlyOwner public {
     require(hasEnded());
-    uint256 totalBalance = this.balance;
+    uint256 totalBalance = address(this).balance;
     require(totalBalance > 0);
     owner.transfer(totalBalance);
     WithdrawnEther(owner, totalBalance);
