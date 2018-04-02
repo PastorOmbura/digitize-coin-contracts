@@ -38,7 +38,7 @@ contract DigitizeCoin is Ownable {
   string public constant name = "Digitize Coin";
   string public constant symbol = "DTZ";
   uint8 public constant decimals = 18;
-  uint256 public constant initialSupply = 200000000 * (10 ** decimals);
+  uint256 public constant initialSupply = 200000000 * (10 ** uint256(decimals));
   uint256 public totalSupply;
 
   mapping(address => uint256) public balances;

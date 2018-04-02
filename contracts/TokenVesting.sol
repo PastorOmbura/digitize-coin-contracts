@@ -72,7 +72,7 @@ contract TokenVesting {
    * @param _token ERC20 token which is being vested
    */
   function vestedAmount(CutdownToken _token) public view returns (uint256) {
-    uint256 currentBalance = _token.balanceOf(this);
+    uint256 currentBalance = _token.balanceOf(address(this));
     uint256 totalBalance = currentBalance.add(released[_token]);
 
     if (now < cliff) {
